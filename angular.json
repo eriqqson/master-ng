@@ -25,6 +25,7 @@
               "projects/corporate-slave/src/assets"
             ],
             "styles": [
+              "projects/corporate-slave/src/custom-theme.scss",
               "projects/corporate-slave/src/styles.css"
             ],
             "scripts": []
