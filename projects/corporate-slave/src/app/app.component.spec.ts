@@ -1,6 +1,7 @@
 import { Component, DebugElement, Directive, HostListener, Input } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
 
@@ -10,8 +11,8 @@ class NavbarStubComponent { }
 @Component({ selector: 'router-outlet', template: '' })
 class RouterOutletStubComponent { }
 
-@Component({ selector: 'app-heroes', template: '' })
-class HeroesStubComponent { }
+@Component({ selector: 'app-dashboard', template: '' })
+class DashboardStubComponent { }
 
 @Component({ selector: 'app-footer', template: '' })
 class FooterStubComponent { }
@@ -40,7 +41,7 @@ describe('AppComponent', () => {
         declarations: [
           AppComponent,
           NavbarStubComponent,
-          HeroesStubComponent,
+          DashboardStubComponent,
           FooterStubComponent
         ],
         imports: [AppModule]
@@ -48,7 +49,7 @@ describe('AppComponent', () => {
 
       // Get rid of app's Router configuration otherwise many failures. Doing so removes Router declarations; add the Router stubs.
       .overrideModule(AppModule, {
-        remove: { imports: [] },
+        remove: { imports: [AppRoutingModule] },
         add: { declarations: [RouterLinkDirectiveStub, RouterOutletStubComponent] }
       })
       .compileComponents()
@@ -82,4 +83,8 @@ describe('AppComponent', () => {
   //   const compiled = fixture.nativeElement as HTMLElement;
   //   expect(compiled.querySelector('.content span')?.textContent).toContain('corporate-slave app is running!');
   // });
+
+  it('can instantiate the component', () => {
+    expect(component).not.toBeNull();
+  });
 });
