@@ -1,0 +1,32 @@
+<form>
+    <mat-stepper #stepper linear [orientation]="(stepperOrientation | async)!">
+        <mat-step>
+            <ng-template matStepLabel></ng-template>
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel></ng-template>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel></ng-template>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel></ng-template>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button type="submit">Submit</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+        </mat-step>
+    </mat-stepper>
+</form>

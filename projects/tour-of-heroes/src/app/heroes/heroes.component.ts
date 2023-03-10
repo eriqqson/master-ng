@@ -11,4 +11,8 @@ export class HeroesComponent {
     id: 1,
     name: 'Wolverine'
   };
+
+  getHero(): void {
+
+  }
 }

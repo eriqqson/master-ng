@@ -1,21 +1,28 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { HarnessLoader } from '@angular/cdk/testing';
+import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
+import { MatTabGroupHarness } from '@angular/material/tabs/testing';
+import { MatTabsModule } from '@angular/material/tabs';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { TabsComponent } from './tabs/tabs.component';
+import { StepperComponent } from './stepper/stepper.component';
+import { TableComponent } from './table/table.component';
 
-@Component({selector: 'app-heroes', template: ''})
-class HeroesStubComponent { }
+@Component({ selector: 'app-tabs', template: '' })
+class TabsStubComponent { }
 
 let fixture: ComponentFixture<AppComponent>;
 let component: AppComponent;
+let loader: HarnessLoader;
 
 describe('AppComponent', () => {
   // Asynchronous beforeEach(): Compiles the components
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        AppComponent,
-        HeroesStubComponent
-      ],
+      declarations: [ AppComponent, TabsStubComponent ],
+      imports: [ NoopAnimationsModule, MatTabsModule ]
     }).compileComponents(); // compile template and css
   }));
 
@@ -23,6 +30,7 @@ describe('AppComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
+    loader = TestbedHarnessEnvironment.loader(fixture);
     fixture.detectChanges();
   })
 
